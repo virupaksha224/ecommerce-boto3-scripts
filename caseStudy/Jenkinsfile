@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_DEFAULT_REGION = 'us-east-1'
+        AWS_ACCESS_KEY_ID     = credentials('aws-credentials').username
+        AWS_SECRET_ACCESS_KEY = credentials('aws-credentials').password
+    }
+
+    stages {
+        stage('Checkout Repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/your-username/your-repo-name.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'pip3 install --user boto3'
+            }
+        }
+
+        stage('Run upload.py') {
+            steps {
+                sh 'python3 upload.py'
+            }
+        }
+
+        stage('Run update.py') {
+            steps {
+                sh 'python3 update.py'
+            }
+        }
+
+        stage('Run delete.py') {
+            steps {
+                sh 'python3 delete.py'
+            }
+        }
+
+        stage('Run monitor.py') {
+            steps {
+                sh 'python3 monitor.py'
+            }
+        }
+    }
+}
