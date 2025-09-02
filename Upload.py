@@ -58,6 +58,7 @@ continue
     except Exception as e:
         print(f"Failed to upload product {product_id} to DynamoDB: {e}")
  
-print("Upload process completed."
+print("Upload process completed.")
+
 
 
