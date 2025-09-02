@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip3 install --user boto3'
+                bat 'pip3 install --user boto3'
             }
         }
 
@@ -19,14 +19,15 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'aws-credentials', 
                     usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     
-                    sh 'python3 Upload.py'
-                    sh 'python3 Update.py'
-                    sh 'python3 Delete.py'
-                    sh 'python3 Monitor.py'
+                    bat 'python3 Upload.py'
+                    bat 'python3 Update.py'
+                    bat 'python3 Delete.py'
+                    bat 'python3 Monitor.py'
                 }
             }
         }
     }
 }
+
 
 
