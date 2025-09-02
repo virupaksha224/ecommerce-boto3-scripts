@@ -20,28 +20,29 @@ pipeline {
             }
         }
 
-        stage('Run upload.py') {
+        stage('Run Upload.py') {
             steps {
                 sh 'python3 upload.py'
             }
         }
 
-        stage('Run update.py') {
+        stage('Run Update.py') {
             steps {
                 sh 'python3 update.py'
             }
         }
 
-        stage('Run delete.py') {
+        stage('Run Delete.py') {
             steps {
                 sh 'python3 delete.py'
             }
         }
 
-        stage('Run monitor.py') {
+        stage('Run Monitor.py') {
             steps {
                 sh 'python3 monitor.py'
             }
         }
     }
+
 }
