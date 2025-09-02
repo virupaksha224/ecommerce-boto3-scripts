@@ -1,0 +1,16 @@
+[
+  {
+    "ProductID": "101",
+    "Category": "Electronics",
+    "Name": "Wireless Headphones",
+    "Price": 59.99,
+    "ImagePath": "images/headphones.jpg"
+  },
+  {
+    "ProductID": "102",
+    "Category": "Books",
+    "Name": "AWS for Beginners",
+    "Price": 29.99,
+    "ImagePath": "images/aws_book.jpg"
+  }
+]
