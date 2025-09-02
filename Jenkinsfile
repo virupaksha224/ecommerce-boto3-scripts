@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        AWS_DEFAULT_REGION = 'us-east-1'
-        AWS_ACCESS_KEY_ID     = credentials('aws-credentials').username
-        AWS_SECRET_ACCESS_KEY = credentials('aws-credentials').password
-    }
-
     stages {
         stage('Checkout Repo') {
             steps {
@@ -20,30 +14,19 @@ pipeline {
             }
         }
 
-        stage('Run Upload.py') {
+        stage('Run Scripts') {
             steps {
-                sh 'python3 upload.py'
-            }
-        }
-
-        stage('Run Update.py') {
-            steps {
-                sh 'python3 update.py'
-            }
-        }
-
-        stage('Run Delete.py') {
-            steps {
-                sh 'python3 delete.py'
-            }
-        }
-
-        stage('Run Monitor.py') {
-            steps {
-                sh 'python3 monitor.py'
+                withCredentials([usernamePassword(credentialsId: 'aws-credentials', 
+                    usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    
+                    sh 'python3 Upload.py'
+                    sh 'python3 Update.py'
+                    sh 'python3 Delete.py'
+                    sh 'python3 Monitor.py'
+                }
             }
         }
     }
-
 }
+
 
