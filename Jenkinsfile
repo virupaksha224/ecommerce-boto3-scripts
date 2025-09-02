@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout Repo') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/your-repo-name.git'
+                git branch: 'main', url: 'https://github.com/virupaksha224/ecommerce-boto3-scripts.git'
             }
         }
 
@@ -46,3 +46,4 @@ pipeline {
     }
 
 }
+
