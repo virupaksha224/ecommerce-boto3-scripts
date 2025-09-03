@@ -42,7 +42,7 @@ for product in products:
         s3.upload_file(image_file, BUCKET, image_key)
     except Exception as e:
         print(f"Failed to upload image {image_file} for product {product_id}: {e}")
-    continue
+        continue
  
     # Add S3 Image URL to product
     image_url = "https://" + BUCKET + ".s3." + AWS_REGION + ".amazonaws.com/" + image_key
