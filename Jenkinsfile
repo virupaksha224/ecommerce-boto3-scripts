@@ -19,12 +19,16 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'aws-credentials', 
                     usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     
+                    bat 'python Upload.py'
+                    bat 'python Update.py'
                     bat 'python Delete.py'
+                    bat 'python Monitor.py'
                 }
             }
         }
     }
 }
+
 
 
 
