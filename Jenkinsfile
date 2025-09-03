@@ -21,6 +21,7 @@ pipeline {
                     
                     bat 'python Upload.py'
                     bat 'python Update.py'
+                    bat 'python Delete.py'
                     bat 'python Monitor.py'
                 }
             }
